@@ -22,10 +22,18 @@ function logPerson(person: Person) {
   )
 }
 
-function filterPersons(persons: Person[], criteria: any): Person[] {
-
-        
+function matchCriteria(person: Person, criteria: any) : any{
+    if (person.hasOwnProperty(criteria.key)) {
+      return person[criteria.key];
     };
+}
+
+
+function filterPersons(persons: Person[], criteria: any): Person[] {
+  var filteredArray = persons.filter((person) => Object.values(criteria));
+  console.log(filteredArray);
+  return filteredArray;
+};
   // TODO: zaimplementować funkcję, która przefiltruje tablicę persons za pomocą predykatu criteria
 
 
@@ -36,8 +44,11 @@ function logPersons() {
     users.forEach(person => {console.log(`${person.name} ${person.surname}`)});
 }
 // 2. Złączyć tablice users i admins i wypisać zawartość złączonej tablicy na konsoli (patrz operator spread)
+
 // 3. Wypisać osoby powyżej 25 lat (patrz operator filter)
+
 // 4. Wypisać osoby o imieniu Adam (zaimplementować funkcję filterPersons) -> const filtered = filterPersons(persons, { name: 'Adam' });
 
-logPersons();
-logPerson(admins[0]);
+// logPersons();
+// logPerson(admins[0]);
+filterPersons(admins, {surname: 'Ryan'});
