@@ -5,7 +5,7 @@ export class BattleShips implements Game {
     name: string;
 
     constructor() {
-        this.name = "Statki"
+        this.name = "Battleships"
     }
     getGameElement(): HTMLElement {
         const div = document.createElement('div');

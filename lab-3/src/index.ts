@@ -1,7 +1,5 @@
-
 import { GameFactory } from "./game.factory";
 import { Games } from "./games.enum";
-import '../styles/styles.scss';
 import { Game } from "./game.model";
 
 
@@ -43,6 +41,7 @@ class App {
         document.body.appendChild(menuContainer);
         document.body.appendChild(gameContainer);
     }
+
 }
 
 new App();
