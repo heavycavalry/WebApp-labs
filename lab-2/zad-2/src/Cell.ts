@@ -7,13 +7,14 @@ export class Cell {
   }
 
   setCellValue(value: number) {
-    if ((value === -1)) {
-      this.htmlElement.innerText = 'O'
+    this.cellValue = value;
+    if ((this.cellValue === -1)) {
+      this.htmlElement.innerText = 'o' 
     }
-    if ((value === 1)) {
-      this.htmlElement.innerText = 'X'
+    if ((this.cellValue === 1)) {
+      this.htmlElement.innerText = 'x'
     }
-    if ((value === 0)) {
+    if ((this.cellValue === 0)) {
       this.htmlElement.innerText = ''
     }
     //TODO: napisz samemu metodę, która ustawia w

@@ -1,28 +1,129 @@
 import { Cell } from './Cell'
 
 export class Board {
-  cells: Cell[]
-  currentSymbol: number;
+  cells: Cell[][]
+  currentSymbol: number = -1;
 
   constructor(size: number) {
-    this.cells = new Array(size)
+    this.cells = new Array(size);
 
     let table = <HTMLTableElement>document.getElementById('gameBoard')
-    let i = 0
+    table.innerHTML = "";
+    
     for (let r = 0; r < size; r++) {
       let row = table.insertRow(r)
+      row.className="row"
+      this.cells[r] = new Array(size);
       for (let c = 0; c < size; c++) {
         let cell = <HTMLTableDataCellElement>row.insertCell(c)
         cell.className = 'cell'
         const newCell = new Cell(cell)
-        this.cells[i] = newCell
+        this.cells[r][c] = newCell
         cell.addEventListener('click', () => this.makeMove(newCell), false)
-        i++
       }
     }
   }
 
   makeMove(cell: Cell): void {
-    cell.setCellValue(this.currentSymbol)
+    if (cell.cellValue !== 1 && cell.cellValue !== -1) {
+      cell.setCellValue(this.currentSymbol)
+      this.currentSymbol *= -1;
+    }
+    this.checkWin();
+  }
+
+  checkRow(row: number): number {
+    let rowArray = this.cells[row];
+    
+    let oneWins = true;
+    rowArray.forEach(cell => {
+      if (cell.cellValue !== 1) {
+        oneWins = false;
+      }
+    });
+    if (oneWins) return 1;
+
+    let minusOneWins = true;
+    rowArray.forEach(cell => {
+      if (cell.cellValue !== -1) {
+        minusOneWins = false;
+      }
+    });
+    if (minusOneWins) return -1;
+
+    return 0;
+  }
+
+  checkColumn(column: number): number {
+    let oneWins = true;
+    for (let i = 0; i < this.cells.length; i++) {
+      let cellValue = this.cells[i][column].cellValue;
+      if (cellValue !== 1) {
+        oneWins = false;
+      }
+    }
+    if (oneWins) return 1;
+    let minusOneWins = true;
+    for (let i = 0; i < this.cells.length; i++) {
+      let cellValue = this.cells[i][column].cellValue;
+      if (cellValue !== -1) {
+        minusOneWins = false;
+      }
+    }
+    if (minusOneWins) return -1;
+
+    return 0;
+  }
+
+  crossCheck(): number {
+    let oneWins = true;
+    for (let i = 0; i < this.cells.length; i++) {
+      let cellValue = this.cells[i][i].cellValue;
+      if (cellValue !== 1) {
+        oneWins = false;
+      }
+    }
+    if (oneWins) return 1;
+    let minusOneWins = true;
+    for (let i = 0; i < this.cells.length; i++) {
+      let cellValue = this.cells[i][i].cellValue;
+      if (cellValue !== 1) {
+        minusOneWins = false;
+      }
+    }
+    if (minusOneWins) return -1;
+
+    return 0;
+
+  }
+
+  reverseCrossCheck(): number {
+    let oneWins = true;
+    for (let i = 0; i < this.cells.length; i++) {
+      let cellValue = this.cells[i][this.cells.length - 1 - i].cellValue;
+      if (cellValue !== 1) {
+        oneWins = false;
+      }
+    }
+    if (oneWins) return 1;
+    let minusOneWins = true;
+    for (let i = 0; i < this.cells.length; i++) {
+      let cellValue = this.cells[i][this.cells.length - 1 - i].cellValue;
+      if (cellValue !== 1) {
+        minusOneWins = false;
+      }
+    }
+    if (minusOneWins) return -1;
+
+    return 0;
+  }
+
+  checkWin(): void {
+    for (let i = 0; i < this.cells.length; i++) {
+      this.checkRow(i);
+      this.checkColumn(i);
+    }
+    this.crossCheck();
+    this.reverseCrossCheck();
   }
 }

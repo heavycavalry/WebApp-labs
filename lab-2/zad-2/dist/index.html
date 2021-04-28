@@ -1,13 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style/style.css" />
     <title>Document</title>
 </head>
+
 <body>
-    <table id="gameBoard"></table>
+    <div class="main-container">
+        <div class="flex-container">
+
+            <div>
+                <h1>
+                    <span>T</span>IC
+                    <span>T</span>ACK
+                    <span>T</span>OE
+                </h1>
+                <p>Choose board size and click ENTER</p>
+                <input id="inputBox" type="number" min="3" max="10" value="3">
+                <div>
+                    <button id="btn" class="resetBtn">NEW GAME</button>
+                </div>
+            </div>
+
+            <div>
+                <table class="clear-user-agent-styles" id="gameBoard"></table>
+            </div>
+        </div>
+
+    </div>
+
     <script src="./main.js"></script>
 </body>
+
 </html>

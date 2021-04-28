@@ -28,7 +28,6 @@ function matchCriteria(person: Person, criteria: any) : any{
     };
 }
 
-
 function filterPersons(persons: Person[], criteria: any): Person[] {
   var filteredArray = persons.filter((person) => Object.values(criteria));
   console.log(filteredArray);
@@ -44,9 +43,11 @@ function logPersons() {
     users.forEach(person => {console.log(`${person.name} ${person.surname}`)});
 }
 // 2. Złączyć tablice users i admins i wypisać zawartość złączonej tablicy na konsoli (patrz operator spread)
+const persons = [...admins, ...users];
+persons.filter(person => logPerson(person));
 
 // 3. Wypisać osoby powyżej 25 lat (patrz operator filter)
-
+persons.filter(person => person.age > 25);
 // 4. Wypisać osoby o imieniu Adam (zaimplementować funkcję filterPersons) -> const filtered = filterPersons(persons, { name: 'Adam' });
 
 // logPersons();
