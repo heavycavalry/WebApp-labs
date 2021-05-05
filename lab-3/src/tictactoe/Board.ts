@@ -4,7 +4,7 @@ export class Board {
   cells: Cell[][]
   currentSymbol: number = -1;
 
-  constructor(size: number) {
+  constructor(size: number = 3) {
     this.cells = new Array(size);
 
     let table = <HTMLTableElement>document.getElementById('gameBoard')
@@ -126,4 +126,5 @@ export class Board {
     this.crossCheck();
     this.reverseCrossCheck();
   }
+
 }

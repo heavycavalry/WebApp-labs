@@ -35,8 +35,10 @@ export class TicTacToe implements Game {
         this.name = "Tic Tac Toe";
     }
     getGameElement(): HTMLElement {
-        const gameBoard = document.createElement('div');
-        gameBoard.id = "gameBoard";
-      return;
+        const game = document.createElement('table');
+        game.id = "gameBoard";
+        new Board(5);
+        return game;
     }
+
 }
