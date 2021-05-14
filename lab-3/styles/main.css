@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 .dark-mode {
   background-color: #1b2021;
   color: #5eafb9;
@@ -28,21 +31,40 @@
 }
 
 .dark-mode #gameBoard {
-  background-color: #5eafb9;
+  background-color: #4e4e4e;
+}
+
+.dark-mode #canvas {
+  background-color: #afafaf;
+}
+
+.dark-mode .cell {
+  background-color: #afafaf;
 }
 
 #gameBoard {
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
+  border-radius: 5px;
+  background-color: #f8f8f8;
   background-color: #f5c7f7;
   padding: 10px;
-  margin-bottom: 10em;
 }
 
 .cell {
   height: 100px;
   width: 100px;
-  background-color: white;
+  background-color: #f8f8f8;
+  font-size: 4rem;
+  color: #4e4e4e;
+  cursor: pointer;
+}
+
+#canvas {
+  width: 500px;
+  height: 500px;
+  border-radius: 5px;
+  background-color: #f8f8f8;
 }
 
 .menu-container {
@@ -50,6 +72,28 @@
   padding: 10px 0;
   background-color: #f8f8f8;
   color: #1b2021;
+  position: relative;
+}
+
+.menu-container::before {
+  content: "\f522";
+  position: absolute;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  font-size: 5rem;
+  top: 40px;
+  left: 50px;
+}
+
+.menu-container::after {
+  content: "\f6e2";
+  position: absolute;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  font-size: 5rem;
+  top: 40px;
+  right: 50px;
+  color: #ff59b4;
 }
 
 h1 {
@@ -58,9 +102,11 @@ h1 {
 
 ul,
 li {
-  list-style-type: circle;
+  list-style: none;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  color: palevioletred;
+  font-weight: bold;
 }
 
 .switch {
@@ -89,6 +135,13 @@ li {
   transition: .4s;
   top: 30px;
   right: 80px;
+}
+
+@media (max-width: 900px) {
+  .slider {
+    top: 20px;
+    right: 20px;
+  }
 }
 
 .slider:before {
@@ -138,12 +191,19 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
+.popup-box {
+  width: 500px;
+  position: absolute;
+}
+
 body {
+  overflow: hidden;
   background-color: #5eafb9;
   color: #f5c7f7;
   text-align: center;
   padding: 0;
   font-family: "Open Sans", sans-serif;
+  padding: 10px;
 }
 
 body div {

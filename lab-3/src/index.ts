@@ -1,8 +1,6 @@
 import { GameFactory } from "./game.factory";
 import { Games } from "./games.enum";
 import { Game } from "./game.model";
-import { TicTacToe } from "./tictactoe/tictactoe";
-
 
 class App {
     constructor() {
@@ -37,17 +35,14 @@ class App {
         menuContainer.appendChild(list);
         document.body.appendChild(menuContainer);
         document.body.appendChild(gameContainer);
+        // const popUpBox = document.createElement('div');
+        // const popUp = document.getElementById('popup');
+        // popUp.appendChild(popUpBox);
+        // popUpBox.classList.add("popup-box");
+
 
         const modeButton = <HTMLInputElement>document.getElementById('checkbox');
-        modeButton.addEventListener('click', function toggle() {
-            if(modeButton.checked) {
-                console.log("srALA")
-                bodyElement.classList.add('dark-mode');
-            }
-            else {
-                bodyElement.classList.remove('dark-mode');
-            }   
-        })
+        modeButton.addEventListener('click', () => (bodyElement.classList.toggle('dark-mode')));
     }
 
 }

@@ -10,7 +10,10 @@ export class TicTacToe implements Game {
 
   getGameElement(): HTMLElement {
     var board= new Board(3);
-    console.log("dupa dupa");
     return board.table;
   }
+
+
 }
+
+

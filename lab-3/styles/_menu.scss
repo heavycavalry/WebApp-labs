@@ -3,6 +3,18 @@
     padding: 10px 0;
     background-color: $white;
     color: $grey;
+    position: relative;
+    &::before {
+        content: "\f522";
+        @include fontAwesome;
+        left: 50px;
+    }
+    &::after {
+        content: "\f6e2";
+        @include fontAwesome;
+        right: 50px;
+        color: $brightPink;
+    }
 }
 
 h1 {
@@ -11,7 +23,9 @@ h1 {
 
 ul,
 li {
-    list-style-type: circle;
+    list-style: none;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    color: palevioletred;
+    font-weight: bold;
 }

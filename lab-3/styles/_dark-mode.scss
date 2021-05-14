@@ -21,6 +21,12 @@
         }
     }
     #gameBoard {
-        background-color: $blue;
+        background-color: $gray;
+    }
+    #canvas {
+        background-color: $light-gray;
+    }
+    .cell {
+        background-color: $light-gray;
     }
 }

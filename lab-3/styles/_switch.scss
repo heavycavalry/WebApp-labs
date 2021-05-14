@@ -13,6 +13,7 @@
     }
 }
 
+$breakpoint: 900px;
 .slider {
     position: absolute;
     cursor: pointer;
@@ -23,6 +24,10 @@
     transition: .4s;
     top: 30px;
     right: 80px;
+    @media (max-width: $breakpoint) {
+        top: 20px;
+        right: 20px;
+    }
     &:before {
         position: absolute;
         content: "";

@@ -1,14 +1,19 @@
 @import "dark-mode";
-@import "game-board";
+@import "tictactoe-board";
+@import "canvas-board";
 @import "menu";
 @import "switch";
 @import "variables";
+@import "popup";
+@import "mixins";
 body {
+    overflow: hidden;
     background-color: $blue;
     color: $light-pink;
     text-align: center;
     padding: 0;
     font-family: $sans-font;
+    padding: 10px;
     div {
         display: flex;
         flex-direction: column;

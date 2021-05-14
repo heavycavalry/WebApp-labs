@@ -1,0 +1,16 @@
+@import "variables";
+@import "mixins";
+#gameBoard {
+    @include boardStyle;
+    background-color: $light-pink;
+    padding: 10px;
+}
+
+.cell {
+    height: 100px;
+    width: 100px;
+    background-color: $white;
+    font-size: 4rem;
+    color: $gray;
+    cursor: pointer;
+}
