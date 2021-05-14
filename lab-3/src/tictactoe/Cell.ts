@@ -17,9 +17,6 @@ export class Cell {
     if ((this.cellValue === 0)) {
       this.htmlElement.innerText = ''
     }
-    //TODO: napisz samemu metodę, która ustawia w
-    // tabeli kółko i krzyżyk. Możesz przyjąć, że kółko
-    // to wartość -1, krzyżyk to wartość 1, a 0 (zero)
-    // oznacza pole nieustawione.
+
   }
 }

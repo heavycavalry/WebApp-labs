@@ -1,0 +1,13 @@
+#gameBoard {
+    width: 400px;
+    height: 400px;
+    background-color: $light-pink;
+    padding: 10px;
+    margin-bottom: 10em;
+}
+
+.cell {
+    height: 100px;
+    width: 100px;
+    background-color: white;
+}

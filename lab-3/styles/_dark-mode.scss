@@ -1,0 +1,26 @@
+@import "variables";
+.dark-mode {
+    background-color: $grey;
+    color: $blue;
+    .menu-container {
+        background-color: $grey;
+        color: $white;
+    }
+    input:checked+.slider {
+        background-color: white;
+        &:before {
+            background-color: $pink;
+        }
+        &::after {
+            content: "LIGHT MODE";
+            position: absolute;
+            color: $white;
+            top: 40px;
+            right: 4px;
+            font-weight: bold;
+        }
+    }
+    #gameBoard {
+        background-color: $blue;
+    }
+}

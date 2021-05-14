@@ -5,8 +5,6 @@ import { TicTacToe } from "./tictactoe/tictactoe";
 
 
 class App {
-
-
     constructor() {
         this.init();
     }
@@ -39,10 +37,11 @@ class App {
         menuContainer.appendChild(list);
         document.body.appendChild(menuContainer);
         document.body.appendChild(gameContainer);
-console.log(bodyElement.className);
+
         const modeButton = <HTMLInputElement>document.getElementById('checkbox');
         modeButton.addEventListener('click', function toggle() {
             if(modeButton.checked) {
+                console.log("srALA")
                 bodyElement.classList.add('dark-mode');
             }
             else {

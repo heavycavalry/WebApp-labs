@@ -1,0 +1,17 @@
+.menu-container {
+    border: 5px solid $pink;
+    padding: 10px 0;
+    background-color: $white;
+    color: $grey;
+}
+
+h1 {
+    font-size: 1.6rem;
+}
+
+ul,
+li {
+    list-style-type: circle;
+    cursor: pointer;
+    font-size: 1rem;
+}

@@ -6,50 +6,55 @@ interface Person {
 }
 
 const users: Person[] = [
-  { name: 'John', surname: 'Smith', age: 25, role: 'user' },
-  { name: 'Adam', surname: 'Johnson', age: 35, role: 'user' },
-  { name: 'Andy', surname: 'Cole', age: 18, role: 'user' },
-]
+  { name: "John", surname: "Smith", age: 25, role: "user" },
+  { name: "Adam", surname: "Johnson", age: 35, role: "user" },
+  { name: "Andy", surname: "Cole", age: 18, role: "user" }
+];
 
 const admins: Person[] = [
-  { name: 'Matthew', surname: 'Ryan', age: 43, role: 'admin' },
-  { name: 'Adam', surname: 'Terry', age: 24, role: 'admin' },
-]
+  { name: "Matthew", surname: "Ryan", age: 43, role: "admin" },
+  { name: "Adam", surname: "Terry", age: 24, role: "admin" }
+];
 
 function logPerson(person: Person) {
-  return console.log(
-    `Imię:${person.name}, Nazwisko: ${person.surname}, Wiek: ${person.age}, Rola: ${person.role}`,
-  )
-}
-
-function matchCriteria(person: Person, criteria: any) : any{
-    if (person.hasOwnProperty(criteria.key)) {
-      return person[criteria.key];
-    };
+  console.log(`Imię:${person.name}, Nazwisko: ${person.surname}, Wiek: ${person.age}, Rola: ${person.role}`);
 }
 
 function filterPersons(persons: Person[], criteria: any): Person[] {
-  var filteredArray = persons.filter((person) => Object.values(criteria));
-  console.log(filteredArray);
+  let criteriaName: string | undefined = criteria["name"];
+  let criteriaSurname: string | undefined = criteria["surname"];
+  let criteriaAge: number | undefined = criteria["age"];
+  let criteriaRole: string | undefined = criteria["role"];
+
+  var filteredArray = persons
+    .filter(person =>  person.name === criteriaName || criteriaName === undefined)
+    .filter((person) => person.surname === criteriaSurname || criteriaSurname === undefined)
+    .filter((person) => person.age === criteriaAge || criteriaAge === undefined)
+    .filter((person) => person.role === criteriaRole || criteriaRole === undefined)
   return filteredArray;
-};
-  // TODO: zaimplementować funkcję, która przefiltruje tablicę persons za pomocą predykatu criteria
-
-
-// TODO:
-// 1. Przy pomocy funkcji logPerson wypisać osoby z tablicy users i admins (patrz foreach)
-function logPersons() {
-    admins.forEach(person => {console.log(`${person.name} ${person.surname}`)});
-    users.forEach(person => {console.log(`${person.name} ${person.surname}`)});
 }
-// 2. Złączyć tablice users i admins i wypisać zawartość złączonej tablicy na konsoli (patrz operator spread)
+
+function logPersons() {
+  admins.forEach((person) => {
+    console.log(`Admin => Name: ${person.name} Surname: ${person.surname}`);
+  });
+  users.forEach((person) => {
+    console.log(`User => Name: ${person.name} Surname: ${person.surname}`);
+  });
+}
+
+function logAllUsers() {
+  const persons = [...admins, ...users];
+persons.filter((person) => logPerson(person));
+}
+
+function logUsersOver25() {
 const persons = [...admins, ...users];
-persons.filter(person => logPerson(person));
+const personsOver25 = persons.filter((person) => person.age > 25);
+console.log(personsOver25);
+}
 
-// 3. Wypisać osoby powyżej 25 lat (patrz operator filter)
-persons.filter(person => person.age > 25);
-// 4. Wypisać osoby o imieniu Adam (zaimplementować funkcję filterPersons) -> const filtered = filterPersons(persons, { name: 'Adam' });
-
-// logPersons();
-// logPerson(admins[0]);
-filterPersons(admins, {surname: 'Ryan'});
+logPersons();
+console.log(filterPersons(admins, { name: "Adam" }));
+logAllUsers();
+logUsersOver25();

@@ -51,7 +51,6 @@ html {
     width: 500px;
     background-color: var(--gray);
     border: 5px solid var(--pink);
-    padding: 3em;
     border-radius: 5%;
     color: var(--gray);
 }

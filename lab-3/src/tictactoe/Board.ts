@@ -1,32 +1,34 @@
-import { Cell } from './Cell'
+import { Cell } from "./Cell";
 
 export class Board {
-  cells: Cell[][]
+  cells: Cell[][];
   currentSymbol: number = -1;
+  table: HTMLTableElement;
+  constructor(size: 3) {
+    this.table = <HTMLTableElement>document.createElement("table");
+    this.table.id = "gameBoard";
 
-  constructor(size: number = 3) {
     this.cells = new Array(size);
 
-    let table = <HTMLTableElement>document.getElementById('gameBoard')
-    table.innerHTML = "";
-    
+    this.table.innerHTML = "";
+
     for (let r = 0; r < size; r++) {
-      let row = table.insertRow(r)
-      row.className="row"
+      let row = this.table.insertRow(r);
+      row.className = "row";
       this.cells[r] = new Array(size);
       for (let c = 0; c < size; c++) {
-        let cell = <HTMLTableDataCellElement>row.insertCell(c)
-        cell.className = 'cell'
-        const newCell = new Cell(cell)
-        this.cells[r][c] = newCell
-        cell.addEventListener('click', () => this.makeMove(newCell), false)
+        let cell = <HTMLTableDataCellElement>row.insertCell(c);
+        cell.className = "cell";
+        const newCell = new Cell(cell);
+        this.cells[r][c] = newCell;
+        cell.addEventListener("click", () => this.makeMove(newCell), false);
       }
     }
   }
 
   makeMove(cell: Cell): void {
     if (cell.cellValue !== 1 && cell.cellValue !== -1) {
-      cell.setCellValue(this.currentSymbol)
+      cell.setCellValue(this.currentSymbol);
       this.currentSymbol *= -1;
     }
     this.checkWin();
@@ -34,9 +36,9 @@ export class Board {
 
   checkRow(row: number): number {
     let rowArray = this.cells[row];
-    
+
     let oneWins = true;
-    rowArray.forEach(cell => {
+    rowArray.forEach((cell) => {
       if (cell.cellValue !== 1) {
         oneWins = false;
       }
@@ -44,7 +46,7 @@ export class Board {
     if (oneWins) return 1;
 
     let minusOneWins = true;
-    rowArray.forEach(cell => {
+    rowArray.forEach((cell) => {
       if (cell.cellValue !== -1) {
         minusOneWins = false;
       }
@@ -87,14 +89,13 @@ export class Board {
     let minusOneWins = true;
     for (let i = 0; i < this.cells.length; i++) {
       let cellValue = this.cells[i][i].cellValue;
-      if (cellValue !== 1) {
+      if (cellValue !== -1) {
         minusOneWins = false;
       }
     }
     if (minusOneWins) return -1;
 
     return 0;
-
   }
 
   reverseCrossCheck(): number {
@@ -109,7 +110,7 @@ export class Board {
     let minusOneWins = true;
     for (let i = 0; i < this.cells.length; i++) {
       let cellValue = this.cells[i][this.cells.length - 1 - i].cellValue;
-      if (cellValue !== 1) {
+      if (cellValue !== -1) {
         minusOneWins = false;
       }
     }
@@ -120,11 +121,14 @@ export class Board {
 
   checkWin(): void {
     for (let i = 0; i < this.cells.length; i++) {
-      this.checkRow(i);
-      this.checkColumn(i);
+      if (this.checkRow(i) === 1 || this.checkColumn(i) === 1)
+        alert("Gratulacje, wygrał użytkownik X");
+      else if (this.checkRow(i) === -1 || this.checkColumn(i) === -1)
+        alert("Gratulacje, wygrał użytkownik O");
     }
-    this.crossCheck();
-    this.reverseCrossCheck();
+    if (this.crossCheck() === 1 || this.reverseCrossCheck() === 1)
+      alert("Gratulacje, wygrał użytkownik X");
+    else if (this.crossCheck() === -1 || this.reverseCrossCheck() === -1)
+      alert("Gratulacje, wygrał użytkownik O");
   }
-
 }
