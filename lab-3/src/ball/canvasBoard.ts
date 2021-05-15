@@ -1,4 +1,5 @@
 import { start } from "repl";
+import { PopUp } from "../popup/popup";
 
 export class CanvasBoard {
     canvas: HTMLCanvasElement;
@@ -106,10 +107,11 @@ export class CanvasBoard {
                 if ((hole.x - circle.x) ** 2 + (hole.y - circle.y) ** 2 <= 450) {
                     time = Math.round((Date.now() - startTime) / 1000);
                     shouldRun = false;
-                    alert(`You win !!! Your time: ${time} seconds`);
-                    this.start();
+                    let youWin = new PopUp("Congratulations!", `Your time: ${time} seconds.`, '');
+                    youWin.createPopUp();
+                    return;
                 }
-              }
+              }  
               drawHole();
               drawCircle();
               requestAnimationFrame(animate);

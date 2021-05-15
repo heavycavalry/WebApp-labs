@@ -3,6 +3,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 .dark-mode {
   background-color: #1b2021;
   color: #5eafb9;
@@ -42,10 +44,18 @@
   background-color: #afafaf;
 }
 
+.dark-mode .popup-box {
+  background-color: #1b2021;
+}
+
+.dark-mode button {
+  color: #f58dc6;
+}
+
 #gameBoard {
   width: 500px;
   height: 500px;
-  border-radius: 5px;
+  border-radius: 20px;
   background-color: #f8f8f8;
   background-color: #f5c7f7;
   padding: 10px;
@@ -63,7 +73,7 @@
 #canvas {
   width: 500px;
   height: 500px;
-  border-radius: 5px;
+  border-radius: 20px;
   background-color: #f8f8f8;
 }
 
@@ -73,6 +83,7 @@
   background-color: #f8f8f8;
   color: #1b2021;
   position: relative;
+  border-radius: 20px;
 }
 
 .menu-container::before {
@@ -81,7 +92,6 @@
   font-family: "Font Awesome 5 Free";
   font-weight: 600;
   font-size: 5rem;
-  top: 40px;
   left: 50px;
 }
 
@@ -91,7 +101,6 @@
   font-family: "Font Awesome 5 Free";
   font-weight: 600;
   font-size: 5rem;
-  top: 40px;
   right: 50px;
   color: #ff59b4;
 }
@@ -193,13 +202,60 @@ input:checked + .slider:before {
 
 .popup-box {
   width: 500px;
+  height: 500px;
+  border-radius: 20px;
+  background-color: #f8f8f8;
   position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  margin: auto;
+  border: 30px solid #f58dc6;
+  -webkit-box-pack: baseline;
+      -ms-flex-pack: baseline;
+          justify-content: baseline;
+}
+
+.popup-box::after {
+  position: absolute;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  font-size: 5rem;
+  content: "\f091";
+  color: #dab200;
+  position: absolute;
+  bottom: 35px;
+}
+
+.popup-box .main-text {
+  font-size: 3rem;
+  color: #ff59b4;
+}
+
+.popup-box .info-text,
+.popup-box .user-text {
+  font-size: 2rem;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.display-none {
+  display: none;
 }
 
 body {
   overflow: hidden;
   background-color: #5eafb9;
-  color: #f5c7f7;
   text-align: center;
   padding: 0;
   font-family: "Open Sans", sans-serif;

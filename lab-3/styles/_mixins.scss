@@ -2,7 +2,7 @@
 @mixin boardStyle {
     width: 500px;
     height: 500px;
-    border-radius: 5px;
+    border-radius: 20px;
     background-color: $white;
 }
 
@@ -11,5 +11,4 @@
     font-family: "Font Awesome 5 Free";
     font-weight: 600;
     font-size: 5rem;
-    top: 40px;
 }

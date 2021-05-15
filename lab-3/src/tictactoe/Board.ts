@@ -1,3 +1,4 @@
+import { PopUp } from "../popup/popup";
 import { Cell } from "./Cell";
 
 export class Board {
@@ -120,15 +121,24 @@ export class Board {
   }
 
   checkWin(): void {
+    let userx = new PopUp("Congratulations!", "", "User x has won!");
+    let userO = new PopUp("Congratulations!", "", "User o has won!");
     for (let i = 0; i < this.cells.length; i++) {
-      if (this.checkRow(i) === 1 || this.checkColumn(i) === 1)
-        alert("Gratulacje, wygrał użytkownik X");
-      else if (this.checkRow(i) === -1 || this.checkColumn(i) === -1)
-        alert("Gratulacje, wygrał użytkownik O");
+      if (
+        this.checkRow(i) === 1 ||
+        this.checkColumn(i) === 1 ||
+        this.crossCheck() === 1 ||
+        this.reverseCrossCheck() === 1
+      ) {
+        userx.createPopUp();
+      } else if (
+        this.checkRow(i) === -1 ||
+        this.checkColumn(i) === -1 ||
+        this.crossCheck() === -1 ||
+        this.reverseCrossCheck() === -1
+      ) {
+        userO.createPopUp();
+      }
     }
-    if (this.crossCheck() === 1 || this.reverseCrossCheck() === 1)
-      alert("Gratulacje, wygrał użytkownik X");
-    else if (this.crossCheck() === -1 || this.reverseCrossCheck() === -1)
-      alert("Gratulacje, wygrał użytkownik O");
   }
 }

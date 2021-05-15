@@ -4,6 +4,7 @@
     background-color: $white;
     color: $grey;
     position: relative;
+    border-radius: 20px;
     &::before {
         content: "\f522";
         @include fontAwesome;
@@ -13,7 +14,7 @@
         content: "\f6e2";
         @include fontAwesome;
         right: 50px;
-        color: $brightPink;
+        color: $bright-pink;
     }
 }
 

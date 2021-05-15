@@ -16,12 +16,39 @@ function watch(
   const originalFn = target[propKey];
   descriptor.value = function (param: User) {
     console.log(`User: ${param} wants ${propKey}`);
-    if (
-      (param.role === Role.Moderator && propKey === "change") ||
-      (param.role === Role.Standard && propKey === "change") ||
-      (param.role === Role.Standard && propKey === "read")
-    ) {
-      console.log("You don't have access!");
+
+    return originalFn.call(this, param);
+  };
+}
+
+function forModerator(
+  target: object,
+  propKey: string,
+  descriptor: PropertyDescriptor
+): void {
+  const originalFn = target[propKey];
+  descriptor.value = function (param: User) {
+    console.log(`User: ${param} wants ${propKey}`);
+    if (param.role !== Role.Moderator && param.role !== Role.Admin) {
+      console.log(
+        "You don't have access. Only Moderator can access resources."
+      );
+      return;
+    }
+    return originalFn.call(this, param);
+  };
+}
+
+function forAdmin(
+  target: object,
+  propKey: string,
+  descriptor: PropertyDescriptor
+): void {
+  const originalFn = target[propKey];
+  descriptor.value = function (param: User) {
+    console.log(`User: ${param} wants ${propKey}`);
+    if (param.role !== Role.Admin){
+      console.log("You don't have access. Only Admin can access resources.");
       return;
     }
     return originalFn.call(this, param);
@@ -75,18 +102,14 @@ class Resource {
     this.resourceValue = "Resource";
   }
 
-  @watch
+  @forModerator
   public read(user: User): void {
-    if (user.role === Role.Moderator || user.role === Role.Admin) {
-      console.log(this.resourceValue);
-    }
+    console.log(this.resourceValue);
   }
 
-  @watch
+  @forAdmin
   public change(user: User): void {
-    if (user.role === Role.Admin) {
-      this.resourceValue = "Changed Resource";
-    }
+    this.resourceValue = "Changed Resource";
   }
 }
 
@@ -107,6 +130,6 @@ console.log("User 2:");
 res.read(user2);
 res.change(user2);
 res.read(user3);
-console.log("User 3:");
+console.log("User 33:");
 res.change(user3);
 res.read(user3);

@@ -1,0 +1,43 @@
+@import "mixins";
+@import "variables";
+.popup-box {
+    @include boardStyle;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    margin: auto;
+    border: 30px solid $pink;
+    justify-content: baseline;
+    &::after {
+        @include fontAwesome;
+        content: "\f091";
+        color: rgb(218, 178, 0);
+        position: absolute;
+        bottom: 35px;
+    }
+    .main-text {
+        font-size: 3rem;
+        color: $bright-pink;
+    }
+    .info-text,
+    .user-text {
+        font-size: 2rem;
+    }
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.display-none {
+    display: none;
+}
