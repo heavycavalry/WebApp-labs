@@ -1,23 +1,25 @@
 import * as http from 'http';
 import * as websocket from 'ws';
 
+console.log('hejo');
+
 const server = http.createServer();
+
 const socket = new websocket.Server({server});
-
-socket.on('connection', (ws) => {
-    ws.on('message', (msg) => {
-    console.log('received: ' + msg);
-    ws.send(msg);
+socket.on('connection', function connection(ws) {
+    ws.on('message', function incoming(message) {
+      broadcast(message.toString());      
+      console.log('received: %s', message);
     });
+  
     ws.send('connected');
-    console.log("new connection");
-});
+  });
 
-
-function broadcast(message:string): void {
+function broadcast(data: string): void {
     socket.clients.forEach(client => {
-        client.send(message)
-    })
-}
+      client.send(data);
+    });	
+};
+
 
 server.listen(8080);

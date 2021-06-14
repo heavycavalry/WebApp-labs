@@ -1,4 +1,4 @@
-const socket = new WebSocket("ws://localhost:3001");
+const socket = new WebSocket("ws://localhost:8080");
 
 socket.onopen = function(e) {
     socket.send("Hello!");
@@ -10,5 +10,4 @@ socket.onmessage = function(event) {
     listItem.textContent = event.data
     listOfMessages?.appendChild(listItem);
 }
-
 document.getElementById('send').addEventListener('click', () => {socket.send((<HTMLInputElement>document.getElementById("messageInput")).value)});

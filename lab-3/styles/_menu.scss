@@ -9,12 +9,14 @@
         content: "\f522";
         @include fontAwesome;
         left: 50px;
+        top: 40px;
     }
     &::after {
         content: "\f6e2";
         @include fontAwesome;
         right: 50px;
         color: $bright-pink;
+        top: 40px;
     }
 }
 

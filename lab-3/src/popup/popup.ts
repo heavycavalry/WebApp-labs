@@ -32,5 +32,7 @@ export class PopUp {
     infoText.classList.add("info-text");
     wonText.classList.add("main-text");
     userText.classList.add("user-text");
+
+    closeBtn.addEventListener('click', () => popUpBox.classList.add("hide"))
   }
 }

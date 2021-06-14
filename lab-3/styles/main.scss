@@ -10,7 +10,6 @@ body {
     overflow: hidden;
     background-color: $blue;
     text-align: center;
-    padding: 0;
     font-family: $sans-font;
     padding: 10px;
     div {
@@ -20,4 +19,9 @@ body {
         margin: 50px auto;
         max-width: 1000px;
     }
+}
+
+.hide {
+    display: none;
+    visibility: hide;
 }

@@ -73,3 +73,19 @@ input:checked+.slider:before {
     -ms-transform: translateX(26px);
     transform: translateX(26px);
 }
+
+.buttonBox {
+    position: absolute;
+    left: 25%;
+    top: 50%;
+}
+
+.backBtn {
+    border-radius: 34px;
+    cursor: pointer;
+    background-color: $light-pink;
+    width: 60px;
+    height: 34px;
+    border: none;
+    font-weight: bold;
+}

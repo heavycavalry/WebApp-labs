@@ -30,9 +30,19 @@
         background-color: $light-gray;
     }
     .popup-box {
-        background-color: $grey;
+        background-color: rgba(0, 0, 0, 0.849);
+        .main-text {
+            color: $white;
+        }
+        .info-text,
+        .user-text {
+            color: $white;
+        }
     }
     button {
         color: $pink;
+    }
+    .backBtn {
+        background-color: black;
     }
 }

@@ -45,18 +45,31 @@
 }
 
 .dark-mode .popup-box {
-  background-color: #1b2021;
+  background-color: rgba(0, 0, 0, 0.849);
+}
+
+.dark-mode .popup-box .main-text {
+  color: #f8f8f8;
+}
+
+.dark-mode .popup-box .info-text,
+.dark-mode .popup-box .user-text {
+  color: #f8f8f8;
 }
 
 .dark-mode button {
   color: #f58dc6;
 }
 
+.dark-mode .backBtn {
+  background-color: black;
+}
+
 #gameBoard {
   width: 500px;
   height: 500px;
   border-radius: 20px;
-  background-color: #f8f8f8;
+  background-color: rgba(255, 255, 255, 0.863);
   background-color: #f5c7f7;
   padding: 10px;
 }
@@ -74,7 +87,7 @@
   width: 500px;
   height: 500px;
   border-radius: 20px;
-  background-color: #f8f8f8;
+  background-color: rgba(255, 255, 255, 0.863);
 }
 
 .menu-container {
@@ -93,6 +106,7 @@
   font-weight: 600;
   font-size: 5rem;
   left: 50px;
+  top: 40px;
 }
 
 .menu-container::after {
@@ -103,6 +117,7 @@
   font-size: 5rem;
   right: 50px;
   color: #ff59b4;
+  top: 40px;
 }
 
 h1 {
@@ -200,11 +215,27 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
+.buttonBox {
+  position: absolute;
+  left: 25%;
+  top: 50%;
+}
+
+.backBtn {
+  border-radius: 34px;
+  cursor: pointer;
+  background-color: #f5c7f7;
+  width: 60px;
+  height: 34px;
+  border: none;
+  font-weight: bold;
+}
+
 .popup-box {
   width: 500px;
   height: 500px;
   border-radius: 20px;
-  background-color: #f8f8f8;
+  background-color: rgba(255, 255, 255, 0.863);
   position: absolute;
   left: 0;
   right: 0;
@@ -212,10 +243,10 @@ input:checked + .slider:before {
   bottom: 0;
   margin: auto;
   margin: auto;
-  border: 30px solid #f58dc6;
   -webkit-box-pack: baseline;
       -ms-flex-pack: baseline;
           justify-content: baseline;
+  border: 5px solid black;
 }
 
 .popup-box::after {
@@ -231,7 +262,7 @@ input:checked + .slider:before {
 
 .popup-box .main-text {
   font-size: 3rem;
-  color: #ff59b4;
+  color: black;
 }
 
 .popup-box .info-text,
@@ -249,15 +280,10 @@ input:checked + .slider:before {
   cursor: pointer;
 }
 
-.display-none {
-  display: none;
-}
-
 body {
   overflow: hidden;
   background-color: #5eafb9;
   text-align: center;
-  padding: 0;
   font-family: "Open Sans", sans-serif;
   padding: 10px;
 }
@@ -275,5 +301,10 @@ body div {
           align-items: center;
   margin: 50px auto;
   max-width: 1000px;
+}
+
+.hide {
+  display: none;
+  visibility: hide;
 }
 /*# sourceMappingURL=main.css.map */

@@ -1,7 +1,9 @@
 {
     "compilerOptions": {
       "target": "ES5",
+      "module": "commonjs",   
       "experimentalDecorators": true,
-      "outDir": "./dist/"
+      "outDir": "./dist/",
+      "skipLibCheck": true
     }
   }

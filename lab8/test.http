@@ -1,0 +1,16 @@
+###
+GET http://localhost:3000/products HTTP/1.1
+
+###
+
+POST http://localhost:3000/products HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Telewizor",
+    "description": "Telewizor plazmowy",
+    "price": 5000
+}
+
+###
+DELETE http://localhost:3000/products/3 HTTP/1.1

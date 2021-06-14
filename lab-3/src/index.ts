@@ -1,7 +1,6 @@
 import { GameFactory } from "./game.factory";
 import { Games } from "./games.enum";
 import { Game } from "./game.model";
-import { PopUp } from "./popup/popup";
 
 class App {
   constructor() {
@@ -33,7 +32,6 @@ class App {
         });
         list.appendChild(dropdownLink);
       }
-      
     }
 
     const title = document.createElement("h1");
@@ -44,14 +42,9 @@ class App {
     document.body.appendChild(gameContainer);
 
     const modeButton = <HTMLInputElement>document.getElementById("checkbox");
-    modeButton.addEventListener("click", () => bodyElement.classList.toggle("dark-mode")
-    );
-
-    const popUp = document.querySelector(".popup-box");
-    const closeBtn = document.querySelector(".close-btn");
-    closeBtn.addEventListener("click", () => popUp.classList.add("display-none")
+    modeButton.addEventListener("click", () =>
+      bodyElement.classList.toggle("dark-mode")
     );
   }
 }
-
 new App();

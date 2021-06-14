@@ -9,8 +9,8 @@
     bottom: 0;
     margin: auto;
     margin: auto;
-    border: 30px solid $pink;
     justify-content: baseline;
+    border: 5px solid black;
     &::after {
         @include fontAwesome;
         content: "\f091";
@@ -20,7 +20,7 @@
     }
     .main-text {
         font-size: 3rem;
-        color: $bright-pink;
+        color: black;
     }
     .info-text,
     .user-text {
@@ -36,8 +36,4 @@
     background: none;
     border: none;
     cursor: pointer;
-}
-
-.display-none {
-    display: none;
 }
