@@ -1,0 +1,19 @@
+{
+    "name": "expressjs",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "author": "",
+    "type": "commonjs",
+    "license": "ISC",
+    "devDependencies": {
+        "nodemon": "^2.0.7"
+    },
+    "dependencies": {
+        "express": "^4.17.1",
+        "install": "^0.13.0",
+        "mongoose": "^5.12.14",
+        "npm": "^7.17.0",
+        "require": "^2.4.20"
+    }
+}

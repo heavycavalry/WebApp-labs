@@ -1,0 +1,48 @@
+
+###
+GET http://localhost:3000/products HTTP/1.1
+
+###
+
+POST http://localhost:3000/products HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Telewizor",
+    "description": "Telewizor plazmowy",
+    "price": 5000,
+    "category": "60aeb1d5d706d8631496bb95"
+}
+
+
+###
+PUT http://localhost:3000/products HTTP/1.1
+content-type: application/json
+
+{
+    "id": "60ae9ecd08037f08c4b74c0e",
+    "name": "Kamera 5",
+    "description": "Telewizor plazmowy",
+    "price": 15000
+}
+
+###
+DELETE http://localhost:3000/products HTTP/1.1
+content-type: application/json
+
+{
+    "id": "60ae9ed108037f08c4b74c0f",
+}
+
+
+
+###
+GET http://localhost:3000/categories HTTP/1.1
+
+###
+POST http://localhost:3000/categories HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Sprzęt RTV"
+}
